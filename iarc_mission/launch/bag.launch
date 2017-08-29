@@ -1,0 +1,15 @@
+<launch>
+        <node pkg="rosbag" type="play" name="rosbag" args="-d 2 /home/csc301/bag/iarc_for_wyz_mission.bag">
+                <!--remap from="/mv_26804026/image_raw" to="/mv_26804026/image_rect_color"/-->
+        </node>
+
+        <include file="$(find dji_sdk)/launch/sdk_manifold.launch"/>
+	<node pkg="iarc_mission" type="iarc_mission_node" name="iarc_mission_node" output="screen"/>
+
+        <node pkg="goal_detected" type="goal_detected" name="goal_detected" output="screen"/>
+
+
+        <node pkg="trajectorygenerator" type="trajectorygenerator_node" name="trajectorygenerator" output="screen"/>
+
+
+</launch>

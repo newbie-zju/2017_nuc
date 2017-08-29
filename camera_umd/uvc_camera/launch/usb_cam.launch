@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera" output="screen">
+      <remap from="/image_raw" to="/usb_cam/image_raw" />
+      <param name="device" type="string" value="/dev/video0" />
+      <param name="width" type="int" value="640" />
+      <param name="height" type="int" value="480" />
+      <param name="format" type="string" value="mjpeg" />
+      <param name="fps" type="int" value="80" />
+      <!--param name="power_line_frequency"  type="int" value="60"/-->
+      <param name="auto_exposure" type="bool" value="0" />
+      <param name="exposure_absolute" value="110" />
+      <!--param name="exposure_auto_priority" value="0" /-->
+      <param name="auto_white_balance" type="bool" value="true" />
+      <!--param name="white_balance_temperature" value="4000" /-->
+      <param name="brightness" value="7" />
+      <param name="auto_focus" type="bool" value="false" />
+      <param name="focus_absolute" type="int" value="0" />
+      <param name="contrast" value="40" />
+      <param name="saturation" value="90" />
+      <!--param name="hue" value="0" /-->
+      <!--param name="gamma" value="200" /-->
+      <param name="sharpness" value="3" />
+      <!--param name="backlight_compensation" value="2" /-->
+	  <param name="gain" value="1" />
+      <param name="auto_gain" type="bool" value="false" />
+      <!--param name="horizontal_flip" value="0" /-->
+      <!--param name="vertical_flip" value="0" /-->
+    </node>
+</launch>
+
+    

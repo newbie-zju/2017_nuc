@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<maxwaitTime>10</maxwaitTime>
+<testInteractionOnly>true</testInteractionOnly>
+<testObsFlag>false</testObsFlag>
+<glbvision_p1>
+	<x>5</x>
+	<y>10</y>
+	<z>1.6</z>
+</glbvision_p1>
+<glbvision_p2>
+	<x>10</x>
+	<y>10</y>
+	<z>1.6</z>
+</glbvision_p2>s
+<glbvision_p3>
+	<x>15</x>
+	<y>10</y>
+	<z>1.6</z>
+</glbvision_p3>
+<timeReactAftHead>4</timeReactAftHead>
+<timeReactAftTop>10</timeReactAftTop>
+<topTouchPixRange>
+	<xmin>280</xmin>
+	<xmax>360</xmax>
+	<ymin>220</ymin>
+	<ymax>260</ymax>
+</topTouchPixRange>
+
+<wanderR>2</wanderR>
+<dxy>0.5</dxy>
+
+<NED2GrTheta>1.5708</NED2GrTheta>
+<NED2GrXOrigin>0</NED2GrXOrigin>
+<NED2GrYOrigin>10</NED2GrYOrigin>
+
+<cruiseGreenSetPX>
+	<p1x>3</p1x>
+	<p2x>7</p2x>
+	<p3x>11</p3x>
+	<p4x>14</p4x>
+	<p5x>17</p5x>
+	<p6x>3</p6x>
+	<p7x>7</p7x>
+	<p8x>11</p8x>
+	<p9x>14</p9x>
+	<p10x>17</p10x>
+</cruiseGreenSetPX>
+
+<cruiseGreenSetPY>
+	<p1y>4</p1y>
+	<p2y>4</p2y>
+	<p3y>4</p3y>
+	<p4y>4</p4y>
+	<p5y>4</p5y>
+	<p6y>8</p6y>
+	<p7y>8</p7y>
+	<p8y>8</p8y>
+	<p9y>8</p9y>
+	<p10y>8</p10y>
+</cruiseGreenSetPY>
+

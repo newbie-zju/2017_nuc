@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- launch node -->
+	<node pkg="obstacle_avoidance" type="obstacle_avoidance_node" name="obstacle_avoidance_node"><!-- output="screen"-->
+    <!--obstacle avoidance param-->
+    <param name="mindistance" type="double" value="150.0" />
+    <param name="maxdistance" type="double" value="7000.0" />
+    <param name="maxconnectdistance" type="double" value="170.0" />
+    <param name="obstaclemaxsize" type="double" value="600.0" />
+    <param name="doavoidancedist" type="double" value="2500.0" />
+    <param name="saferadius" type="double" value="1500.0" />
+    <param name="avoidancevelocitymag" type="double" value="0.8" />
+  </node>
+  <!-- rplidar launch node -->
+  <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+</launch>

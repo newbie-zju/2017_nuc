@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="video_writer_py" name="video_writer_global_py" type="video_writer_py.py" output="screen">
+  <!--param name="subscribed_topic" type="string" value="/fisheye/image"/-->
+  <param name="subscribed_topic" type="string" value="/my_video"/>
+  <param name="show_video_flag" type="bool" value="true"/>
+  <param name="save_video_flag" type="bool" value="true"/>
+  <param name="video_file_name" type="string" value="/home/zmart/2017/src/video_writer_py/video/out_global.avi"/>
+  <param name="rate" type="double" value="30.0"/>
+  </node>
+</launch>

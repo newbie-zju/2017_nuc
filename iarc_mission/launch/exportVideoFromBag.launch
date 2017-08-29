@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="rosbag" type="play" name="rosbag" args="-d 2 /home/csc301/bag/iarc_for_rxy.bag"/>
+  <!--node pkg="image_proc" type="image_proc" name="image_proc" ns="/mv_26804026"/-->
+  <node name="extract" pkg="image_view" type="extract_images" respawn="false" output="screen" cwd="ROS_HOME">
+    <remap from="image" to="/mv_26804026/image_rect_color"/>
+  </node>
+</launch>

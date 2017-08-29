@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="video_publisher_py" name="video_publisher_global_py" type="video_publisher_py.py" ><!--output="screen"-->
+        <param name="show_video_flag" type="bool" value="false"/>
+        <!--param name="published_video_file_name" type="string"
+               value="/home/zmart/2017/src/video_publisher_py/video/8_14.avi"/-->
+        <param name="published_video_file_name" type="int" value="1"/>
+        <param name="given_video_rate" type="double" value="30.0"/>
+    </node>
+</launch>

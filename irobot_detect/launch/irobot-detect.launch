@@ -1,0 +1,34 @@
+<launch>
+  <!-- launch node -->
+  <node pkg="irobot_detect" type="irobot_detect_node" name="irobot_detect_node"><!-- output="screen"-->
+    <!--convex for pnp Param Settings -->
+    <param name="Convexlength" type="double" value="0.254" />
+    <param name="Convexwidth" type="double" value="0.154" />
+    
+    <!--convex detect HSV Param Settings -->
+    <param name="LowHg" type="int" value="30" />
+    <param name="HighHg" type="int" value="80" />
+    <param name="LowSg" type="int" value="55" />
+    <param name="HighSg" type="int" value="255" />
+    <param name="LowVg" type="int" value="0" />
+    <param name="HighVg" type="int" value="225" />
+    
+    <param name="SamplePath" type="string" value="/home/zmart/debugPackage_ws/src/irobot_detect/Refshapes/" />
+     
+    <!--convex detect threshold Param Settings -->
+    <param name="shapeSim_threshold" type="double" value="0.110" />
+    <param name="referenceShapeNum" type="int" value="5" />
+    
+    <!--irobot subscribe node camera image topic name -->
+    <param name="image_subscribeName" type="string" value="/fisheye/image" />
+  </node>
+  
+  <node pkg="fisheye" type="fisheye_node" name="fisheye_node" output="screen">
+    <param name="focal_multiple" type="double" value="1"/>
+    <param name="centralPointDeviation_u" type="double" value="0"/>
+    <param name="centralPointDeviation_v" type="double" value="0"/>
+  </node>
+  
+  <arg name="usb_cam" default="false"/>
+  <include file="$(find uvc_camera)/launch/usb_cam.launch"/>
+</launch>

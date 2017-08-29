@@ -1,0 +1,14 @@
+#request:
+#quadrotorState = CRUISE, TRACK, APPROACH
+int8 quadrotorState
+float32 targetPosNEDx
+float32 targetPosNEDy
+float32 targetPosNEDz
+float32 theta
+int8 cruiseStep
+---
+#response:
+float32 flightCtrlDstx
+float32 flightCtrlDsty
+float32 flightCtrlDstz
+uint8 flightFlag

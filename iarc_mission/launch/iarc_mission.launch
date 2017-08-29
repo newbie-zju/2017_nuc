@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+	<!-- Common Interface -->
+	<arg name="device" default="26804026"/>
+	<arg name="rate" default="20"/>
+	<!-- Camera Settings -->
+ 
+	<!-- Node Settings -->
+	<arg name="yaw_origin_" default="-3.035"/>
+	<arg name="xMax_" default="20.0"/>
+	<arg name="yMax_" default="20.0"/>
+	<arg name="sta_x_" default="10.0"/>
+	<arg name="sta_y_" default="20.0"/>
+	<arg name="output" default="screen"/>
+	<arg name="bluefox" default="false"/>
+	<arg name="proc" default="true"/>
+   	<arg name="irobot_detect" default="true"/>
+	<arg name="trajectorygenerator" default="true"/>
+	<!--arg name="obstacle_avoidance" default="true"/-->
+	<arg name="iarc_tf" default="true"/>
+	<arg name="boundary_detect" default="true"/>
+	
+	<!-- sdk_manifold -->
+	<include file="$(find dji_sdk)/launch/sdk_manifold.launch"/>
+
+	<!-- hokuyo_node -->
+	<!--include file="$(find hokuyo_node)/hokuyo.launch"/-->
+
+	<!-- guidance_node -->
+	<!--node pkg="guidance" type="guidanceNode" name="guidance"/-->
+
+	<!-- laser_detect -->
+	<include file="$(find obstacle_avoidance)/launch/obstacle-avoidance.launch"/>
+
+	<!-- iarc_mission -->
+	<node pkg="iarc_mission" type="iarc_mission_node" name="iarc_mission_node" output="screen">
+		<param name="yaw_origin" type="double" value="$(arg yaw_origin_)"/>
+		<param name="sta_x" type="double" value="$(arg sta_x_)"/>
+		<param name="sta_y" type="double" value="$(arg sta_y_)"/>
+		<param name="xMax" type="double" value="$(arg xMax_)"/>
+		<param name="yMax" type="double" value="$(arg yMax_)"/>
+	</node>
+	
+	<!-- bluefox -->
+	<!--include file="$(find bluefox2)/launch/single_node.launch"/-->
+	
+    <!-- irobot_detect -->
+    <include file="$(find irobot_detect)/launch/irobot-detect.launch"/>
+	
+	<!-- irobot_detect -->
+    <include file="$(find multirobot_detect_iarc)/launch/multirobot_detect_iarc.launch"/>
+	
+	<!-- irobot_detect -->
+    <include file="$(find video_publisher_py)/launch/video_publisher_global_py.launch"/>
+	
+	<!-- goalDetected -->
+    	<!--node if="$(arg irobot_detect_node)" 
+		pkg="irobot_detect" type="irobot_detect_node" name="irobot_detect_node"-->
+    	<!--/node-->
+
+	<!-- trajectory generator -->
+    	<node if="$(arg trajectorygenerator)" 
+		pkg="trajectorygenerator" type="trajectorygenerator_node" name="trajectorygenerator" output="screen">
+		<param name="xMax" type="double" value="$(arg xMax_)"/>
+		<param name="yMax" type="double" value="$(arg yMax_)"/>
+		<param name="cruiseVel" type="double" value="0.5"/>
+		<param name="Kr" type="double" value="4"/>
+		<param name="avoidanceV" type="double" value="0.6"/>
+		<param name="fattractive" type="double" value="1.0"/>
+   	</node>
+	
+	<!-- boundaty detect -->
+	<node if="$(arg boundary_detect)"
+		pkg="boundary_detect" type="boundaryDetect_node" name="boundaryDetect_node">
+		<param name="xMax" type="double" value="$(arg xMax_)"/>
+		<param name="yMax" type="double" value="$(arg yMax_)"/>
+	</node>
+
+	<!-- iarc_tf -->
+	<node if="$(arg iarc_tf)"
+		pkg="iarc_tf" type="ned_world_dynamic_node" name="ned_world_dynamic_node" output="screen">
+		<param name="yaw_origin" type="double" value="$(arg yaw_origin_)"/>
+		<param name="sta_x" type="double" value="$(arg sta_x_)"/>
+		<param name="sta_y" type="double" value="$(arg sta_y_)"/>
+	</node>
+	<node if="$(arg iarc_tf)"
+		pkg="iarc_tf" type="ned_world_velocity_transform_node" name="ned_world_velocity_transform_node" output="screen">
+		<param name="yaw_origin" type="double" value="$(arg yaw_origin_)"/>
+	</node>
+
+	<!-- obstacle avoidance -->
+	<!--node if="$(arg obstacle_avoidance)" 
+		pkg="obstacle_avoidance" type="obstacleAvoidance_node" name="obstacleAvoidance_node" output="screen">
+		<param name="Object_N" type="double" value="2.5"/>
+		<param name="Object_E" type="double" value="6.5"/>
+	</node-->
+</launch>

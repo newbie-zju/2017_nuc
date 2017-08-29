@@ -1,0 +1,9 @@
+#request
+int8 velocityFrame
+float64 velocityX
+float64 velocityY
+---
+#response
+int8 velocityFrameRes
+float64 velocityXRes
+float64 velocityYRes
